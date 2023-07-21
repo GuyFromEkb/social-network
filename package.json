@@ -1,0 +1,47 @@
+{
+  "name": "study-project",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "webpack serve --env mode=development --env port=3010",
+    "build": "webpack",
+    "build:dev": "webpack --env mode=development",
+    "lint": "npx eslint src --max-warnings=0",
+    "lint:fix": "eslint src --fix"
+  },
+  "author": "GuyFromEkb",
+  "license": "ISC",
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+    "@types/node": "^20.3.1",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "@types/webpack": "^5.28.1",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-react": "^7.33.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "prettier": "2.8.8",
+    "react-refresh": "^0.14.0",
+    "sass": "^1.63.6",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.2.6",
+    "ts-node": "^10.5.0",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
+    "typescript": "^4.5.5",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.1"
+  }
+}
