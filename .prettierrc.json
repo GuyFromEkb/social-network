@@ -12,7 +12,7 @@
   "arrowParens": "always",
   "endOfLine": "lf",
   "importOrder": [
-    "^(?!.*[.]css$)[./].*$",
+    "^./.*.scss$",
     "<THIRD_PARTY_MODULES>",
     "",
     "^(shared|app|pages|widgets|features|entities)(/.*)$",
