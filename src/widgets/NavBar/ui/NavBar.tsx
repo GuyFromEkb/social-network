@@ -4,8 +4,8 @@ import { FC } from "react"
 import { ThemeSwitcher } from "features/ThemeSwitcher"
 import { routePaths } from "shared/config/routerConfig"
 import { cn } from "shared/lib/classNames"
-import { AppLink } from "shared/ui"
-import { AppLinkTheme } from "shared/ui/AppLink"
+import { AppLink } from "shared/ui/AppLink"
+import { AppLinkTheme } from "shared/ui/AppLink/AppLink"
 
 export const NavBar: FC = () => {
   return (

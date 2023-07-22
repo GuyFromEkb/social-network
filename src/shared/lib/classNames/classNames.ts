@@ -4,5 +4,5 @@ export const classNames = (cls: string, mods: Record<string, boolean> = {}, addi
     return acc
   }, [])
 
-  return [cls, ...additional, ...filteredMods].join(" ")
+  return [cls, ...additional, ...filteredMods].filter(Boolean).join(" ")
 }
