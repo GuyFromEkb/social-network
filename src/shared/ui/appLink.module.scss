@@ -1,0 +1,15 @@
+.appLink{
+font: inherit;
+}
+
+.activeLink{
+  text-decoration: underline;
+}
+
+.primary{
+  color:var(--primary-color);
+}
+
+.inverted{
+  color:var(--inverted-primary-color);
+}
