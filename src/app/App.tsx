@@ -8,13 +8,12 @@ import { cn } from "shared/lib/classNames"
 import { NavBar } from "widgets/NavBar"
 
 export const App: FC = () => {
-  const { toggleTheme, theme } = useTheme()
+  const { theme } = useTheme()
 
   return (
     <main className={cn("app", {}, [theme])}>
       <NavBar />
       <AppRouter />
-      <button onClick={toggleTheme}>THEME</button>
     </main>
   )
 }
