@@ -1,5 +1,4 @@
 import path from "path"
-import "webpack-dev-server"
 
 import { BuildEnv, BuildOptions, buildWebpackConfig } from "./config/webpack"
 

@@ -8,6 +8,7 @@ import { BuildOptions } from "./types/config"
 export const buildPlugins = (options: BuildOptions): WebpackPluginInstance[] => {
   const { isDev, paths } = options
   return [
+    // походу это бесполезно в react приложении
     // new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: paths.html,

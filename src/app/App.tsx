@@ -5,12 +5,13 @@ import { Link } from "react-router-dom"
 
 import { AppRouter } from "app/providers/router"
 import { useTheme } from "app/providers/theme"
+import { cn } from "shared/lib/classNames"
 
 export const App: FC = () => {
   const { toggleTheme, theme } = useTheme()
 
   return (
-    <main className={[theme, "app"].join(" ")}>
+    <main className={cn("app", {}, [theme])}>
       <h1>I am APP COMPONENT!</h1>
       <div>
         <Link to={"/about"}>ABOUT</Link>
