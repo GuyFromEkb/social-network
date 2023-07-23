@@ -1,0 +1,24 @@
+.sideBar {
+  width: var(--sidebar-width-collapsed);
+  height: calc(100vh - var(--navbar-height));
+  background: var(--inverted-bg-color);
+  transition: width 0.3s;
+  overflow: hidden;
+}
+
+.sideBarOpen {
+  width: var(--sidebar-width);
+}
+
+.greed {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr auto;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

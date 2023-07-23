@@ -1,19 +1,24 @@
 import "./styles/index.scss"
 
+import cls from "./app.module.scss"
 import { FC } from "react"
 
 import { AppRouter } from "app/providers/router"
 import { useTheme } from "app/providers/theme"
 import { cn } from "shared/lib/classNames"
 import { NavBar } from "widgets/NavBar"
+import { SideBar } from "widgets/SideBar"
 
 export const App: FC = () => {
   const { theme } = useTheme()
 
   return (
-    <main className={cn("app", {}, [theme])}>
+    <div className={cn("app", {}, [theme])}>
       <NavBar />
-      <AppRouter />
-    </main>
+      <main className={cls.pageGrid}>
+        <SideBar />
+        <AppRouter />
+      </main>
+    </div>
   )
 }
