@@ -16,3 +16,6 @@ declare module "*.jpg"
 declare module "*.jpeg"
 declare module "*.png"
 declare module "*.json"
+
+//env variables
+declare const __ENV_IS_DEV__: boolean

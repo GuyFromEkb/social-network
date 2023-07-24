@@ -14,6 +14,9 @@ export const buildPlugins = (options: BuildOptions): WebpackPluginInstance[] => 
       template: paths.html,
     }),
     new webpack.ProgressPlugin(),
+    new webpack.DefinePlugin({
+      __ENV_IS_DEV__: JSON.stringify(isDev),
+    }),
     isDev && new ReactRefreshWebpackPlugin(),
     !isDev &&
       new MiniCssExtractPlugin({
