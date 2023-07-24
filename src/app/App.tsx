@@ -1,7 +1,7 @@
 import "./styles/index.scss"
 
 import cls from "./app.module.scss"
-import { FC } from "react"
+import { FC, Suspense } from "react"
 
 import { AppRouter } from "app/providers/router"
 import { useTheme } from "app/providers/theme"
@@ -14,11 +14,13 @@ export const App: FC = () => {
 
   return (
     <div className={cn("app", {}, [theme])}>
-      <NavBar />
-      <main className={cls.pageGrid}>
-        <SideBar />
-        <AppRouter />
-      </main>
+      <Suspense fallback={"Загрузка переводов..."}>
+        <NavBar />
+        <main className={cls.pageGrid}>
+          <SideBar />
+          <AppRouter />
+        </main>
+      </Suspense>
     </div>
   )
 }
