@@ -1,4 +1,3 @@
-import cls from "./themeSwitcher.module.scss"
 import { FC } from "react"
 
 import { Theme, useTheme } from "app/providers/theme"
@@ -14,7 +13,7 @@ interface IThemeSwitcherProps {
 export const ThemeSwitcher: FC<IThemeSwitcherProps> = ({ className }) => {
   const { toggleTheme, theme } = useTheme()
   return (
-    <Button className={cn(cls.switcher, {}, [className])} theme={ThemeButton.Clear} onClick={toggleTheme}>
+    <Button className={cn("", {}, [className])} theme={ThemeButton.Clear} onClick={toggleTheme}>
       {theme === Theme.Dark ? <IconThemeLight /> : <IconThemeDark />}{" "}
     </Button>
   )

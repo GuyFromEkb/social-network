@@ -4,11 +4,15 @@
 *::after {
   box-sizing: border-box;
 }
-/* Убираем внутренние отступы */
+
+/* Убираем внутренние отступы
+   Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class */
 ul[class],
 ol[class] {
   padding: 0;
+  list-style: none;
 }
+
 /* Убираем внешние отступы */
 body,
 h1,
@@ -27,21 +31,18 @@ dl,
 dd {
   margin: 0;
 }
-/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
-ul[class],
-ol[class] {
-  list-style: none;
-}
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 /* Упрощаем работу с изображениями */
 img {
   max-width: 100%;
   display: block;
 }
-/* Наследуем шрифты для инпутов и кнопок */
+
 input,
 button,
 textarea,
