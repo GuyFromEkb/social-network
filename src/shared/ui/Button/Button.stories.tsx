@@ -1,22 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react"
 
-import "app/styles/index.scss"
-
-import { Theme } from "app/providers/theme"
-
 import { Button, ThemeButton } from "./Button"
 
 const meta = {
   title: "shared/ui/Button",
   component: Button,
-
-  decorators: [
-    (Story) => (
-      <div className={"app" + " " + Theme.Light}>
-        <Story />
-      </div>
-    ),
-  ],
   parameters: {
     layout: "centered",
   },
@@ -35,7 +23,6 @@ export const Clear: Story = {
     theme: ThemeButton.Clear,
   },
 }
-
 export const Outline: Story = {
   args: {
     children: "Нажми меня",
