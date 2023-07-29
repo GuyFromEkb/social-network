@@ -43,3 +43,8 @@ jobs:
         run: npm ci
       - name: "собираем build"
         run: npm run build
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
+        with:
+          folder: build
+
