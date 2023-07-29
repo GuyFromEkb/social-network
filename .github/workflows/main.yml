@@ -1,14 +1,15 @@
 name: lint test build
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ github.actor }} run pipelines 🚀
 on:
   pull_request:
+    types: [opened, edited, reopened]
     branches:
       - master
   push:
     branches:
       - master
 jobs:
-  pipelines:
+  linting:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,13 +27,20 @@ jobs:
         run: npm run lint-ts
       - name: "прогоняем линт SCSS"
         run: npm run lint-css
+  build:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - name: "Подключаемся к репозиторию"
+        uses: actions/checkout@v3
+      - name: "Запускаем node.js версии ${{ matrix.node-version }}"
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: "устанавливаем node_modules"
+        run: npm ci
       - name: "собираем build"
         run: npm run build
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
