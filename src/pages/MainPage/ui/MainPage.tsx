@@ -9,6 +9,7 @@ const MainPage: FC = () => {
     <div>
       <h4> {t("Текст на главной странице")}</h4>
       <h3>{text}</h3>
+      <h2>loadPath edited</h2>
     </div>
   )
 }
