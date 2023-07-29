@@ -6,7 +6,7 @@ import webpack, { WebpackPluginInstance } from "webpack"
 import { BuildOptions } from "./types/config"
 
 export const buildPlugins = (options: BuildOptions): WebpackPluginInstance[] => {
-  const { isDev, paths } = options
+  const { isDev, paths, env } = options
   return [
     // походу это бесполезно в react приложении
     // new webpack.HotModuleReplacementPlugin(),
@@ -16,6 +16,7 @@ export const buildPlugins = (options: BuildOptions): WebpackPluginInstance[] => 
     new webpack.ProgressPlugin(),
     new webpack.DefinePlugin({
       __ENV_IS_DEV__: JSON.stringify(isDev),
+      __ENV_PUBLISH__: JSON.stringify(env.publish),
     }),
     isDev && new ReactRefreshWebpackPlugin(),
     !isDev &&

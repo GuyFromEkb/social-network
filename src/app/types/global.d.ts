@@ -18,4 +18,5 @@ declare module "*.png"
 declare module "*.json"
 
 //env variables
+declare const __ENV_PUBLISH__: "gh-pages" | undefined
 declare const __ENV_IS_DEV__: boolean

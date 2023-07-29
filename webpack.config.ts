@@ -4,6 +4,7 @@ import { BuildEnv, BuildOptions, buildWebpackConfig } from "./config/webpack"
 
 export default (env: BuildEnv) => {
   const options: BuildOptions = {
+    env,
     isDev: env.mode === "development",
     port: env.port || 3000,
     paths: {
