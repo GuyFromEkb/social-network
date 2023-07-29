@@ -30,7 +30,7 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        node-version: [ 17.x, 18.x ]
+        node-version: [ 17.x ]
     runs-on: ubuntu-latest
     steps:
       - name: "Подключаемся к репозиторию"
@@ -43,3 +43,8 @@ jobs:
         run: npm ci
       - name: "собираем build"
         run: npm run build
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
+        with:
+          folder: build
+
