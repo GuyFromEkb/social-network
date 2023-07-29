@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { useTranslation } from "react-i18next"
 
-const text = __ENV_PUBLISH__ === "gh-pages" ? "HashRouter" : "BrowserRouter"
+const text = __ENV_IS_PUBLISH_TO_GH_PAGE__ ? "HashRouter" : "BrowserRouter"
 const MainPage: FC = () => {
   const { t } = useTranslation("main")
 

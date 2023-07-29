@@ -5,7 +5,7 @@
   "scripts": {
     "start": "webpack serve --env mode=development --env port=3010",
     "build": "webpack",
-    "build:gh-pages": "webpack --env publish=gh-pages",
+    "build:gh-pages": "webpack --env publish_to_gh_page=true",
     "build:dev": "webpack --env mode=development",
     "lint-ts": "npx eslint src --max-warnings=0",
     "lint-ts:fix": "eslint src --fix",
@@ -36,6 +36,7 @@
     "@types/webpack": "^5.28.1",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^8.8.0",

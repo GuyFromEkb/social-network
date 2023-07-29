@@ -9,7 +9,7 @@ import { ThemeProvider } from "app/providers/theme"
 import "shared/config/i18n"
 
 // нужно для корректной работы роутинга на ghPages
-const RouteProvider = __ENV_PUBLISH__ === "gh-pages" ? HashRouter : BrowserRouter
+const RouteProvider = __ENV_IS_PUBLISH_TO_GH_PAGE__ ? HashRouter : BrowserRouter
 
 render(
   <RouteProvider>

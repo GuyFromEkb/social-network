@@ -3,7 +3,7 @@ export type BuildMode = "production" | "development"
 export interface BuildEnv {
   mode?: BuildMode
   port?: number
-  publish?: "gh-pages"
+  publish_to_gh_page?: boolean
 }
 
 export interface BuildPaths {
@@ -11,6 +11,8 @@ export interface BuildPaths {
   build: string
   html: string
   src: string
+  locales: string
+  buildLocales: string
 }
 
 export interface BuildOptions {

@@ -12,6 +12,8 @@ export default (env: BuildEnv) => {
       entry: path.resolve(__dirname, "src", "main.tsx"),
       src: path.resolve(__dirname, "src"),
       build: path.resolve(__dirname, "build"),
+      locales: path.resolve(__dirname, "public", "locales"),
+      buildLocales: path.resolve(__dirname, "build", "locales"),
     },
   }
 
