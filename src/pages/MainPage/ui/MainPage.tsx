@@ -7,7 +7,7 @@ const MainPage: FC = () => {
   return (
     <div>
       <h4> {t("Текст на главной странице")}</h4>
-      <h1>hello ghPage</h1>
+      <h3>Hash Router</h3>
     </div>
   )
 }
