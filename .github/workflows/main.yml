@@ -28,7 +28,7 @@ jobs:
       - name: "прогоняем линт SCSS"
         run: npm run lint-css
   build:
-    needs: [lint, test]
+    needs: [linting]
     runs-on: ubuntu-latest
     strategy:
       matrix:
