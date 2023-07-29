@@ -18,7 +18,9 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["./src/*"]
+      "*": ["./src/*"],
+      //для config файлов
+      "src/*": ["./src/*"]
     }
   },
   "ts-node": {

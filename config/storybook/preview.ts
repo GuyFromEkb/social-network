@@ -1,7 +1,7 @@
 import type { Preview } from "@storybook/react"
 
 // глобальные стили, что бы применились темы, css переменные
-import "../../src/app/styles/index.scss"
+import "src/app/styles/index.scss"
 
 const preview: Preview = {
   parameters: {
