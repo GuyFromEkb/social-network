@@ -55,6 +55,11 @@ jobs:
     steps:
       - name: "Подключаемся к репозиторию"
         uses: actions/checkout@v3
+      - name: "Достаем модули из кеша (закешированы в job:linting)"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: "устанавливаем node_modules"
         run: npm ci
       - name: "собираем build"
