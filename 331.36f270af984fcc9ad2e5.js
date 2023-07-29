@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkstudy_project=self.webpackChunkstudy_project||[]).push([[331],{331:(e,s,r)=>{r.r(s),r.d(s,{default:()=>h});var t=r(893),c=r(72);const h=function(){var e=(0,c.$G)("main").t;return(0,t.jsxs)("div",{children:[(0,t.jsxs)("h4",{children:[" ",e("Текст на главной странице")]}),(0,t.jsx)("h1",{children:"hello ghPage"})]})}}}]);
