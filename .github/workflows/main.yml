@@ -30,7 +30,7 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        node-version: [ 17.x ]
+        node-version: [ 17.x, 18.x ]
     runs-on: ubuntu-latest
     steps:
       - name: "Подключаемся к репозиторию"
@@ -39,6 +39,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: "устанавливаем node_modules"
         run: npm ci
       - name: "собираем build"
@@ -55,7 +60,7 @@ jobs:
     steps:
       - name: "Подключаемся к репозиторию"
         uses: actions/checkout@v3
-      - name: "Достаем модули из кеша (закешированы в job:linting)"
+      - name: "Кэшируем модули"
         uses: actions/cache@v3
         with:
           path: ~/.npm
