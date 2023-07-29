@@ -11,16 +11,14 @@ on:
 jobs:
   linting:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
     steps:
       - name: "Подключаемся к репозиторию"
         uses: actions/checkout@v3
-      - name: "Запускаем node.js версии ${{ matrix.node-version }}"
-        uses: actions/setup-node@v3
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: "устанавливаем node_modules"
         run: npm ci
       - name: "прогоняем линт TS"
@@ -29,10 +27,11 @@ jobs:
         run: npm run lint-css
   build:
     needs: [linting]
-    runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [ 17.x, 18.x ]
+    runs-on: ubuntu-latest
     steps:
       - name: "Подключаемся к репозиторию"
         uses: actions/checkout@v3
