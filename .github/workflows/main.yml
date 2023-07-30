@@ -70,7 +70,7 @@ jobs:
       - name: "устанавливаем node_modules"
         run: npm ci
       - name: "собираем build"
-        run: npm run build ${{ env.github_repo_name }}
+        run:  npm run webpack --env github_repo_name=${{ env.github_repo_name }}
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
