@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "webpack serve --env mode=development --env port=3010",
+    "start": "webpack serve --env MODE=development --env PORT=3010",
     "build": "webpack",
-    "build:gh-pages": "webpack --env github_repo_name=REPONAMEHAHA",
-    "build:dev": "webpack --env mode=development",
+    "build:dev": "webpack --env MODE=development",
     "lint-ts": "npx eslint src --max-warnings=0",
     "lint-ts:fix": "eslint src --fix",
     "lint-css": "npx stylelint \"**/*.scss\"",

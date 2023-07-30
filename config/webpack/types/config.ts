@@ -1,9 +1,9 @@
 export type BuildMode = "production" | "development"
 
 export interface BuildEnv {
-  mode?: BuildMode
-  port?: number
-  github_repo_name?: boolean
+  MODE?: BuildMode
+  PORT?: number
+  GITHUB_REPO_NAME?: string
 }
 
 export interface BuildPaths {

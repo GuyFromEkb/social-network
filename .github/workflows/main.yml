@@ -1,4 +1,4 @@
-name: lint test build
+name: lint test build publish
 run-name: ${{ github.actor }} run pipelines 🚀
 on:
   pull_request:
@@ -9,51 +9,49 @@ on:
     branches:
       - master
 jobs:
-#  linting:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: "Подключаемся к репозиторию"
-#        uses: actions/checkout@v3
-#      - name: "Кэшируем модули"
-#        uses: actions/cache@v3
-#        with:
-#          path: ~/.npm
-#          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-#      - name: "устанавливаем node_modules"
-#        run: npm ci
-#      - name: "прогоняем линт TS"
-#        run: npm run lint-ts
-#      - name: "прогоняем линт SCSS"
-#        run: npm run lint-css
-#  build:
-#    needs: [linting]
-#    continue-on-error: true
-#    strategy:
-#      matrix:
-#        node-version: [ 17.x, 18.x ]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: "Подключаемся к репозиторию"
-#        uses: actions/checkout@v3
-#      - name: "Запускаем node.js версии ${{ matrix.node-version }}"
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: ${{ matrix.node-version }}
-#      - name: "Кэшируем модули"
-#        uses: actions/cache@v3
-#        with:
-#          path: ~/.npm
-#          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-#      - name: "устанавливаем node_modules"
-#        run: npm ci
-#      - name: "собираем build"
-#        run: npm run build
-#      - name: Deploy to GitHub Pages
-#        uses: JamesIves/github-pages-deploy-action@v4.4.3
-#        with:
-#          folder: build
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Подключаемся к репозиторию"
+        uses: actions/checkout@v3
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: "устанавливаем node_modules"
+        run: npm ci
+      - name: "прогоняем линт TS"
+        run: npm run lint-ts
+      - name: "прогоняем линт SCSS"
+        run: npm run lint-css
+
+  build:
+    needs: [linting]
+    continue-on-error: true
+    strategy:
+      matrix:
+        node-version: [17.x, 18.x]
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Подключаемся к репозиторию"
+        uses: actions/checkout@v3
+      - name: "Запускаем node.js версии ${{ matrix.node-version }}"
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: "устанавливаем node_modules"
+        run: npm ci
+      - name: "собираем build"
+        run: npm run build
+
   deploy:
-#    needs: [ linting ]
+    needs: [build]
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -69,10 +67,9 @@ jobs:
           key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: "устанавливаем node_modules"
         run: npm ci
-      - name: "собираем build"
-        run:  webpack --env github_repo_name=${{ env.github_repo_name }}
-      - name: Deploy to GitHub Pages
+      - name: "собираем build для github page"
+        run: webpack --env GITHUB_REPO_NAME=${{ env.github_repo_name }}
+      - name: Выгружаем билд на GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           folder: build
-
