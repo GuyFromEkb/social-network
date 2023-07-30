@@ -26,8 +26,23 @@ jobs:
       - name: "прогоняем линт SCSS"
         run: npm run lint-css
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Подключаемся к репозиторию"
+        uses: actions/checkout@v3
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: "устанавливаем node_modules"
+        run: npm ci
+      - name: "прогоняем тесты"
+        run: npm run test
+
   build:
-    needs: [linting]
+    needs: [linting, test]
     continue-on-error: true
     strategy:
       matrix:
