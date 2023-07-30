@@ -6,6 +6,14 @@
 import type { Config } from "jest"
 
 const config: Config = {
+  clearMocks: true,
+  coverageProvider: "v8",
+  moduleDirectories: ["node_modules"],
+  resetMocks: true,
+  rootDir: "../../",
+  modulePaths: ["<rootDir>/src/"],
+  testEnvironment: "node",
+  testMatch: ["<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"],
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -16,7 +24,6 @@ const config: Config = {
   // cacheDirectory: "C:\\Users\\User\\AppData\\Local\\Temp\\jest",
 
   // Automatically clear mock calls, instances, contexts and results before every test
-  clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
@@ -33,7 +40,6 @@ const config: Config = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -73,7 +79,6 @@ const config: Config = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: ["node_modules"],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
@@ -109,7 +114,6 @@ const config: Config = {
   // reporters: undefined,
 
   // Automatically reset mock state before every test
-  resetMocks: true,
 
   // Reset the module registry before running each individual test
   // resetModules: false,
@@ -121,7 +125,6 @@ const config: Config = {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-  rootDir: "../../",
 
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
@@ -144,7 +147,6 @@ const config: Config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -153,10 +155,6 @@ const config: Config = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: [
-    // Обнаружил разницу между МАК ОС и ВИНДОУС!!!
-    "<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)",
-  ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
