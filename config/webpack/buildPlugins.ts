@@ -8,6 +8,9 @@ import { BuildOptions } from "./types/config"
 
 export const buildPlugins = (options: BuildOptions): WebpackPluginInstance[] => {
   const { isDev, paths, env } = options
+
+  console.log("CONFIG", env.github_repo_name)
+  console.log("CONFIG JSON", JSON.stringify(env.github_repo_name))
   return [
     // походу это бесполезно в react приложении
     // new webpack.HotModuleReplacementPlugin(),
@@ -17,7 +20,7 @@ export const buildPlugins = (options: BuildOptions): WebpackPluginInstance[] => 
     new webpack.ProgressPlugin(),
     new webpack.DefinePlugin({
       __ENV_IS_DEV__: JSON.stringify(isDev),
-      __ENV_IS_PUBLISH_TO_GH_PAGE__: JSON.stringify(env.publish_to_gh_page),
+      __ENV_GITHUB_REPO_NAME__: JSON.stringify(env.github_repo_name),
     }),
     isDev && new ReactRefreshWebpackPlugin(),
     !isDev &&

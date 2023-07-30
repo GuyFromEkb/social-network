@@ -5,7 +5,7 @@
   "scripts": {
     "start": "webpack serve --env mode=development --env port=3010",
     "build": "webpack",
-    "build:gh-pages": "webpack --env publish_to_gh_page=true",
+    "build:gh-pages": "webpack --env github_repo_name=REPONAMEHAHA",
     "build:dev": "webpack --env mode=development",
     "lint-ts": "npx eslint src --max-warnings=0",
     "lint-ts:fix": "eslint src --fix",

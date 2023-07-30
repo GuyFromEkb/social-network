@@ -3,7 +3,7 @@ export type BuildMode = "production" | "development"
 export interface BuildEnv {
   mode?: BuildMode
   port?: number
-  publish_to_gh_page?: boolean
+  github_repo_name?: boolean
 }
 
 export interface BuildPaths {

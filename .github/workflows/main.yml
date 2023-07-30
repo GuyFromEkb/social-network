@@ -57,6 +57,8 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
+    env:
+      github_repo_name: "${{ github.event.repository.name }}"
     steps:
       - name: "Подключаемся к репозиторию"
         uses: actions/checkout@v3
@@ -68,7 +70,7 @@ jobs:
       - name: "устанавливаем node_modules"
         run: npm ci
       - name: "собираем build"
-        run: npm run build:gh-pages
+        run: npm run build ${{ env.github_repo_name }}
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:

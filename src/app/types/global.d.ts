@@ -19,4 +19,4 @@ declare module "*.json"
 
 //env variables
 declare const __ENV_IS_DEV__: boolean
-declare const __ENV_IS_PUBLISH_TO_GH_PAGE__: boolean
+declare const __ENV_GITHUB_REPO_NAME__: string | undefined
