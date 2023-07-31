@@ -10,6 +10,18 @@ export const buildLoaders = (options: BuildOptions): RuleSetRule[] => {
     use: "ts-loader",
   }
 
+  //должен идти перед ts loader *но это не точно
+  // const babelLoader = {
+  //   test: /\.(js|jsx|tsx)$/,
+  //   exclude: /node_modules/,
+  //   use: {
+  //     loader: "babel-loader",
+  //     options: {
+  //       presets: ["@babel/preset-env"],
+  //     },
+  //   },
+  // }
+
   const styleLoader = getStyleLoader(options.isDev)
 
   const svgLoader = {
