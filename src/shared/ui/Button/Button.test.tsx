@@ -1,22 +1,17 @@
-import { getByText, render, screen, waitFor } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
+import { render, screen } from "@testing-library/react"
 
-import { Button } from "./Button"
+import { Button, ThemeButton } from "./Button"
 
-test("loads and displays greeting", async () => {
-  // ARRANGE
-  render(<Button>Click Me</Button>)
+describe("Button", () => {
+  test("render in the Doc", async () => {
+    render(<Button>Click Me</Button>)
 
-  // ACT
-  // await userEvent.click(screen.getByText("Load Greeting"))
-  // await screen.findByRole("heading")
+    expect(screen.getByTestId("app-button")).toBeInTheDocument()
+  })
 
-  expect(screen.getByText("Click Me")).toBeInTheDocument()
+  test("with Theme class", () => {
+    render(<Button theme={ThemeButton.Clear}>Click Me</Button>)
 
-  // await waitFor(() => {
-  //   expect(getByText("the lion king")).toBeInTheDocument()
-  // })
-  // // ASSERT
-  // expect(screen.getByRole("heading")).toHaveTextContent("hello there")
-  // expect(screen.getByRole("button")).toBeDisabled()
+    expect(screen.getByTestId("app-button").className.includes(ThemeButton.Clear, 2)).toBeTruthy()
+  })
 })
