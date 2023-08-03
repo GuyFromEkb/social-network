@@ -4,6 +4,7 @@ export interface BuildEnv {
   MODE?: BuildMode
   PORT?: number
   GITHUB_REPO_NAME?: string
+  BUNDLE_ANALYZER?: boolean
 }
 
 export interface BuildPaths {

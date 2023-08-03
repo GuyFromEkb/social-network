@@ -3,6 +3,7 @@ import CopyPlugin from "copy-webpack-plugin"
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import MiniCssExtractPlugin from "mini-css-extract-plugin"
 import webpack, { WebpackPluginInstance } from "webpack"
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer"
 
 import { BuildOptions } from "./types/config"
 
@@ -20,6 +21,7 @@ export const buildPlugins = (options: BuildOptions): WebpackPluginInstance[] => 
       __ENV_IS_DEV__: JSON.stringify(isDev),
       __ENV_GITHUB_REPO_NAME__: JSON.stringify(env.GITHUB_REPO_NAME),
     }),
+    env.BUNDLE_ANALYZER && new BundleAnalyzerPlugin(),
     isDev && new ReactRefreshWebpackPlugin(),
     !isDev &&
       new MiniCssExtractPlugin({
