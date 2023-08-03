@@ -9,7 +9,7 @@ export const useTheme = () => {
     setTheme((_theme) => {
       const theme = _theme === Theme.Light ? Theme.Dark : Theme.Light
       localStorage.setItem(LS_THEME_KEY, theme)
-      
+
       return theme
     })
   }

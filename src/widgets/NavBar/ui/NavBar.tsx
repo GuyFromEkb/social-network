@@ -2,10 +2,9 @@ import cls from "./navBar.module.scss"
 import { FC } from "react"
 import { useTranslation } from "react-i18next"
 
-import { routePaths } from "app/providers/router"
-import { cn } from "shared/lib/classNames"
-import { AppLink } from "shared/ui/AppLink"
-import { AppLinkTheme } from "shared/ui/AppLink/AppLink"
+import { routePaths } from "~shared/constants/routePath"
+import { cn } from "~shared/lib/classNames"
+import { AppLink, AppLinkTheme } from "~shared/ui/AppLink"
 
 export const NavBar: FC = () => {
   const { t } = useTranslation()

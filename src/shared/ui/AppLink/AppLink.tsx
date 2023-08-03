@@ -2,7 +2,7 @@ import cls from "./appLink.module.scss"
 import { FC } from "react"
 import { NavLink, NavLinkProps } from "react-router-dom"
 
-import { cn } from "shared/lib/classNames"
+import { cn } from "../../lib/classNames"
 
 export enum AppLinkTheme {
   Primary = "primary",

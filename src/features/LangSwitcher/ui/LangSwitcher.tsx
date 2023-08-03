@@ -1,8 +1,8 @@
 import { FC } from "react"
 import { useTranslation } from "react-i18next"
 
-import { cn } from "shared/lib/classNames"
-import { Button, ThemeButton } from "shared/ui/Button"
+import { cn } from "~shared/lib/classNames"
+import { Button, ThemeButton } from "~shared/ui/Button"
 
 interface ILangSwitcherProps {
   className?: string

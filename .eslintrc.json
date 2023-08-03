@@ -8,6 +8,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:storybook/recommended",
+    "plugin:@conarti/feature-sliced/rules",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -15,13 +16,19 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react"],
+  "plugins": ["@typescript-eslint", "react", "prettier"],
   "settings": {
     "react": {
       "version": "17.0.2"
     }
   },
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "react/react-in-jsx-scope": "off",
     "no-console": "warn",
     "@typescript-eslint/ban-ts-comment": "off",

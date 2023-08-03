@@ -1,10 +1,11 @@
 import { FC } from "react"
-
-import { Theme, useTheme } from "app/providers/theme"
 import IconThemeDark from "shared/assets/icons/theme-dark.svg"
 import IconThemeLight from "shared/assets/icons/theme-light.svg"
-import { cn } from "shared/lib/classNames"
-import { Button, ThemeButton } from "shared/ui/Button"
+import { useTheme } from "src/shared/lib/theme"
+
+import { Theme } from "~shared/lib/appTheme"
+import { cn } from "~shared/lib/classNames"
+import { Button, ThemeButton } from "~shared/ui/Button"
 
 interface IThemeSwitcherProps {
   className?: string

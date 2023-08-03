@@ -1,9 +1,8 @@
 import cls from "./sideBar.module.scss"
-import { FC, useState } from "react"
-import { useTranslation } from "react-i18next"
-
 import { LangSwitcher } from "features/LangSwitcher"
 import { ThemeSwitcher } from "features/ThemeSwitcher"
+import { FC, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { cn } from "shared/lib/classNames"
 import { Button } from "shared/ui/Button"
 

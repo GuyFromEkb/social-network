@@ -1,21 +1,22 @@
 {
-  "trailingComma": "es5",
+  "printWidth": 110,
   "tabWidth": 2,
   "useTabs": false,
   "semi": false,
   "singleQuote": false,
-  "printWidth": 110,
   "quoteProps": "as-needed",
   "jsxSingleQuote": false,
+  "trailingComma": "es5",
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
   "arrowParens": "always",
   "endOfLine": "lf",
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"],
   "importOrder": [
     "^./.*.scss$",
     "<THIRD_PARTY_MODULES>",
     "",
-    "^(shared|app|pages|widgets|features|entities)(/.*)$",
+    "^~(shared|app|pages|widgets|features|entities)(/.*)$",
     "",
     "^[./]"
   ]

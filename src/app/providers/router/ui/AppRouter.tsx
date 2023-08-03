@@ -1,7 +1,7 @@
 import { FC, Suspense } from "react"
 import { Route, Routes } from "react-router-dom"
 
-import { routeConfig } from "app/providers/router"
+import { routeConfig } from "../lib/routerConfig"
 
 export const AppRouter: FC = () => {
   return (
