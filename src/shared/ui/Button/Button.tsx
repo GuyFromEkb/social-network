@@ -15,7 +15,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button: FC<IButtonProps> = (props) => {
   const { className, theme, children, ...otherProps } = props
   return (
-    <button {...otherProps} className={cn(cls.btn, {}, [cls[theme], className])}>
+    <button data-testid={"app-button"} {...otherProps} className={cn(cls.btn, {}, [cls[theme], className])}>
       {children}
     </button>
   )
