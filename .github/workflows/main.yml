@@ -34,7 +34,7 @@ jobs:
       - name: build storybook
         run: npm run storybook:build
       - name: screenshot testing
-        run: npm run test:ui:ci
+        run: npx loki test --reactUri file:./storybook-static --chromeFlags='--headless --disable-gpu --hide-scrollbars --no-sandbox'
   #  linting:
   #    runs-on: ubuntu-latest
   #    steps:
