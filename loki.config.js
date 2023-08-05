@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-undef
 const target = process.env.CI ? "chrome.app" : "chrome.docker"
-console.log("TARGET", target)
+console.log("TARGET1", target)
 
 // eslint-disable-next-line
 module.exports = {
