@@ -9,106 +9,54 @@ on:
     branches:
       - master
 jobs:
-  pipeline:
+  linting:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [17.x]
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Staring Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: "Подключаемся к репозиторию"
+        uses: actions/checkout@v3
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
         with:
-          node-version: ${{ matrix.node-version }}
-
-      #      - name: build production project
-      #        run: npm run build:prod
-      #      - name: linting typescript
-      #        run: npm run lint:ts
-      #      - name: linting css
-      #        run: npm run lint:scss
-      #      - name: unit testing
-      #        run: npm run test:unit
-      - name: download chrome dependency
-        run: sudo apt-get install -y libxss1 libappindicator3-1 libindicator7 fonts-liberation libdbus-1-3
-
-      - name: install chrome
-        run: |
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb
-
-      - name: Check if Chrome is installed
-        run: google-chrome-stable --version
-
-      - name: install modules
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: "устанавливаем node_modules"
         run: npm ci
+      - name: "прогоняем линт TS"
+        run: npm run lint-ts
+      - name: "прогоняем линт SCSS"
+        run: npm run lint-css
 
-      - name: build storybook
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Подключаемся к репозиторию"
+        uses: actions/checkout@v3
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: "устанавливаем node_modules"
+        run: npm ci
+      - name: "прогоняем тесты"
+        run: npm run test
+
+  test-ui:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Подключаемся к репозиторию"
+        uses: actions/checkout@v3
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: "устанавливаем node_modules"
+        run: npm ci
+      - name: "билдим витрину"
         run: npm run storybook:build
-      - name: screenshot testing
+      - name: запускаем локи для скриншот тестов
         run: npm run test:ui:ci
-  #  linting:
-  #    runs-on: ubuntu-latest
-  #    steps:
-  #      - name: "Подключаемся к репозиторию"
-  #        uses: actions/checkout@v3
-  #      - name: "Кэшируем модули"
-  #        uses: actions/cache@v3
-  #        with:
-  #          path: ~/.npm
-  #          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-  #      - name: "устанавливаем node_modules"
-  #        run: npm ci
-  #      - name: "прогоняем линт TS"
-  #        run: npm run lint-ts
-  #      - name: "прогоняем линт SCSS"
-  #        run: npm run lint-css
-
-  #  test:
-  #    runs-on: ubuntu-latest
-  #    steps:
-  #      - name: "Подключаемся к репозиторию"
-  #        uses: actions/checkout@v3
-  #      - name: "Кэшируем модули"
-  #        uses: actions/cache@v3
-  #        with:
-  #          path: ~/.npm
-  #          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-  #      - name: "устанавливаем node_modules"
-  #        run: npm ci
-  #      - name: "прогоняем тесты"
-  #        run: npm run test
-#  pre-test-ui:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: "Подключаемся к репозиторию"
-#        uses: actions/checkout@v3
-#      - name: "Кэшируем модули"
-#        uses: actions/cache@v3
-#        with:
-#          path: ~/.npm
-#          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-#      - name: "устанавливаем node_modules"
-#        run: npm ci
-#      - name: "билдим витрину"
-#        run: npm run build-storybook
-
-#  test-ui:
-#    needs: [pre-test-ui]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: "Подключаемся к репозиторию"
-#        uses: actions/checkout@v3
-#      - name: "Кэшируем модули"
-#        uses: actions/cache@v3
-#        with:
-#          path: ~/.npm
-#          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-#      - name: "устанавливаем node_modules"
-#        run: npm ci
-#      - name: "прогоняем скриншот тесты"
-#        run: npm run test:ci
 #  build:
 #    needs: [linting, test, test-ui]
 #    continue-on-error: true
@@ -156,3 +104,34 @@ jobs:
 #        uses: JamesIves/github-pages-deploy-action@v4.4.3
 #        with:
 #          folder: build
+#
+#  pipeline:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [17.x]
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Staring Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#
+#      #      - name: build production project
+#      #        run: npm run build:prod
+#      #      - name: linting typescript
+#      #        run: npm run lint:ts
+#      #      - name: linting css
+#      #        run: npm run lint:scss
+#      #      - name: unit testing
+#      #        run: npm run test:unit
+#
+#      - name: install modules
+#        run: npm ci
+#
+#      - name: build storybook
+#        run: npm run storybook:build
+#      - name: screenshot testing
+#        run: npm run test:ui:ci
+##

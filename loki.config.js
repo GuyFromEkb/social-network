@@ -1,19 +1,18 @@
-// eslint-disable-next-line no-undef
-const target = process.env.CI ? "chrome.app" : "chrome.docker"
-console.log("TARGET1", target)
-
-// eslint-disable-next-line
 module.exports = {
+  diffingEngine: "pixelmatch",
+  pixelmatch: {
+    threshold: 0.15,
+  },
   configurations: {
     "chrome.laptop": {
-      target: "chrome.app",
+      target: "chrome.docker",
       width: 1366,
       height: 768,
       deviceScaleFactor: 1,
       mobile: false,
     },
     "chrome.iphone7": {
-      target: "chrome.app",
+      target: "chrome.docker",
       preset: "iPhone 7",
     },
   },
