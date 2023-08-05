@@ -9,6 +9,7 @@ export const PageLoader: FC = () => {
   return (
     <div className={cls.container}>
       <h4> {t("Страница загружается")}</h4>
+      <div>failed screenshot test</div>
       <Loader />
     </div>
   )
