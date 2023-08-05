@@ -22,9 +22,9 @@ jobs:
       - name: "устанавливаем node_modules"
         run: npm ci
       - name: "прогоняем линт TS"
-        run: npm run lint-ts
+        run: npm run lint:ts
       - name: "прогоняем линт SCSS"
-        run: npm run lint-css
+        run: npm run lint:scss
 
   test:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
       - name: "устанавливаем node_modules"
         run: npm ci
       - name: "прогоняем тесты"
-        run: npm run test
+        run: npm run test:unit
 
   test-ui:
     runs-on: ubuntu-latest
