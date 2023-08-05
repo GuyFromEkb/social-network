@@ -57,81 +57,51 @@ jobs:
         run: npm run storybook:build
       - name: запускаем локи для скриншот тестов
         run: npm run test:ui:ci
-#  build:
-#    needs: [linting, test, test-ui]
-#    continue-on-error: true
-#    strategy:
-#      matrix:
-#        node-version: [17.x, 18.x]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: "Подключаемся к репозиторию"
-#        uses: actions/checkout@v3
-#      - name: "Запускаем node.js версии ${{ matrix.node-version }}"
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: ${{ matrix.node-version }}
-#      - name: "Кэшируем модули"
-#        uses: actions/cache@v3
-#        with:
-#          path: ~/.npm
-#          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-#      - name: "устанавливаем node_modules"
-#        run: npm ci
-#      - name: "собираем build"
-#        run: npm run build
-#
-#  deploy:
-#    needs: [build]
-#    permissions:
-#      contents: write
-#    runs-on: ubuntu-latest
-#    env:
-#      github_repo_name: "${{ github.event.repository.name }}"
-#    steps:
-#      - name: "Подключаемся к репозиторию"
-#        uses: actions/checkout@v3
-#      - name: "Кэшируем модули"
-#        uses: actions/cache@v3
-#        with:
-#          path: ~/.npm
-#          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-#      - name: "устанавливаем node_modules"
-#        run: npm ci
-#      - name: "собираем build для github page"
-#        run: webpack --env GITHUB_REPO_NAME=${{ env.github_repo_name }}
-#      - name: Выгружаем билд на GitHub Pages
-#        uses: JamesIves/github-pages-deploy-action@v4.4.3
-#        with:
-#          folder: build
-#
-#  pipeline:
-#    runs-on: ubuntu-latest
-#    strategy:
-#      matrix:
-#        node-version: [17.x]
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Staring Node.js ${{ matrix.node-version }}
-#        uses: actions/setup-node@v1
-#        with:
-#          node-version: ${{ matrix.node-version }}
-#
-#      #      - name: build production project
-#      #        run: npm run build:prod
-#      #      - name: linting typescript
-#      #        run: npm run lint:ts
-#      #      - name: linting css
-#      #        run: npm run lint:scss
-#      #      - name: unit testing
-#      #        run: npm run test:unit
-#
-#      - name: install modules
-#        run: npm ci
-#
-#      - name: build storybook
-#        run: npm run storybook:build
-#      - name: screenshot testing
-#        run: npm run test:ui:ci
-##
+
+  build:
+    needs: [linting, test, test-ui]
+    continue-on-error: true
+    strategy:
+      matrix:
+        node-version: [18.x]
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Подключаемся к репозиторию"
+        uses: actions/checkout@v3
+      - name: "Запускаем node.js версии ${{ matrix.node-version }}"
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: "устанавливаем node_modules"
+        run: npm ci
+      - name: "собираем build"
+        run: npm run build
+
+  deploy:
+    needs: [build]
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    env:
+      github_repo_name: "${{ github.event.repository.name }}"
+    steps:
+      - name: "Подключаемся к репозиторию"
+        uses: actions/checkout@v3
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: "устанавливаем node_modules"
+        run: npm ci
+      - name: "собираем build для github page"
+        run: webpack --env GITHUB_REPO_NAME=${{ env.github_repo_name }}
+      - name: Выгружаем билд на GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
+        with:
+          folder: build
