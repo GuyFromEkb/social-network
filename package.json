@@ -13,7 +13,7 @@
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook",
-    "test": "jest --config ./config/jest/jest.config.ts",
+    "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "loki",
     "test:ui:ok": "loki approve",
     "test:ui:report": "npm run test:ui:report:json && npm run test:ui:report:html && start .loki/report.html",
