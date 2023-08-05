@@ -1,7 +1,9 @@
 // eslint-disable-next-line no-undef
 const target = process.env.CI ? "chrome.app" : "chrome.docker"
 console.log("TARGET", target)
-export default {
+
+// eslint-disable-next-line
+module.exports = {
   "chrome.laptop": {
     target: "chrome.docker",
     width: 1366,
