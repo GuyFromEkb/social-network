@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react"
 import { PageLoader } from "./PageLoader"
 
 const meta = {
-  title: "shared/ui/PageLoader",
+  title: "shared/PageLoader",
   component: PageLoader,
   parameters: {
     layout: "centered",

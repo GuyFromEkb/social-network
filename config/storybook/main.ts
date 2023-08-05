@@ -17,14 +17,12 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
-  webpackFinal: async (config, { configType }) => {
-    const isDev = configType === "DEVELOPMENT"
-
+  webpackFinal: async (config) => {
     return {
       ...config,
       module: {
         ...config.module,
-        rules: [...config.module.rules, getStyleLoader(isDev)],
+        rules: [...config.module.rules, getStyleLoader(true)],
       },
       resolve: {
         ...config.resolve,

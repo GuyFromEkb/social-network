@@ -41,8 +41,39 @@ jobs:
       - name: "прогоняем тесты"
         run: npm run test
 
+  pre-test-ui:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Подключаемся к репозиторию"
+        uses: actions/checkout@v3
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: "устанавливаем node_modules"
+        run: npm ci
+      - name: "билдим витрину"
+        run: npm run build-storybook
+
+  test-ui:
+    needs: [pre-test-ui]
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Подключаемся к репозиторию"
+        uses: actions/checkout@v3
+      - name: "Кэшируем модули"
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: "устанавливаем node_modules"
+        run: npm ci
+      - name: "прогоняем скриншот тесты"
+        run: npm run test:ci
+
   build:
-    needs: [linting, test]
+    needs: [linting, test, test-ui]
     continue-on-error: true
     strategy:
       matrix:
