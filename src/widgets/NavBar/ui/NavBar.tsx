@@ -8,6 +8,7 @@ import { AppLink, AppLinkTheme } from "~shared/ui/AppLink"
 
 export const NavBar: FC = () => {
   const { t } = useTranslation()
+
   return (
     <nav className={cn(cls.navBar)}>
       <div className={cls.linkContainer}>
