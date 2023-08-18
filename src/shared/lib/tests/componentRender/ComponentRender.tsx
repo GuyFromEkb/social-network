@@ -3,7 +3,7 @@ import { FC, ReactNode } from "react"
 import { I18nextProvider } from "react-i18next"
 
 import { ThemeProvider } from "../../theme"
-import i18nMockConfig from "./i18nMockConfig.test"
+import i18nMockConfig from "./i18nMockConfig"
 
 const TestProviders: FC = ({ children }) => {
   return (
