@@ -15,10 +15,12 @@ export const SideBar: FC = () => {
   }
 
   return (
-    <aside className={cn(cls.sideBar, { [cls.sideBarOpen]: collapsed })}>
+    <aside data-testid={"sidebar"} className={cn(cls.sideBar, { [cls.sideBarOpen]: collapsed })}>
       <div className={cls.greed}>
         <div>
-          <Button onClick={handleToggleSideBar}>{collapsed ? t("свернуть") : t("развернуть")}</Button>
+          <Button data-testid={"sidebar-button"} onClick={handleToggleSideBar}>
+            {collapsed ? t("свернуть") : t("развернуть")}
+          </Button>
         </div>
         <div className={cls.footer}>
           <ThemeSwitcher />
