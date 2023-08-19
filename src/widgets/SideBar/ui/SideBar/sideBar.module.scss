@@ -1,19 +1,20 @@
 .sideBar {
-  width: var(--sidebar-width-collapsed);
+  width: var(--sidebar-width);
   height: calc(100vh - var(--navbar-height));
   background: var(--inverted-bg-color);
   transition: width 0.3s;
-  overflow: hidden;
+  position: relative;
 }
 
-.sideBarOpen {
-  width: var(--sidebar-width);
+.collapsed {
+  width: var(--sidebar-width-collapsed);
 }
 
 .greed {
   display: grid;
   height: 100%;
   grid-template-rows: 1fr auto;
+  padding: 0 0 20px;
 }
 
 .footer {
@@ -21,4 +22,15 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.footer.footerShort {
+  flex-direction: column;
+}
+
+.collapsedBtn {
+  transform: translate(100%);
+  position: absolute;
+  right: 0;
+  bottom: 32px;
 }
