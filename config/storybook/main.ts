@@ -1,6 +1,8 @@
 import type { StorybookConfig } from "@storybook/react-webpack5"
+import { RuleSetRule } from "webpack"
 
 import { buildResolve, getStyleLoader } from "../webpack"
+import { getSvgLoader } from "../webpack/loaders/getSvgLoader"
 
 const config: StorybookConfig = {
   stories: ["../../src/**/*.stories.@(ts|tsx)"],
@@ -18,17 +20,19 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   webpackFinal: async (config) => {
-    return {
-      ...config,
-      module: {
-        ...config.module,
-        rules: [...config.module.rules, getStyleLoader(true)],
-      },
-      resolve: {
-        ...config.resolve,
-        plugins: [...(config.resolve.plugins ?? []), ...buildResolve().plugins],
-      },
-    }
+    // remove svg from existing rule
+    const fileLoaderRule = config.module.rules.find(
+      (rule: RuleSetRule & { test: RegExp }) => rule.test && rule.test.test(".svg")
+    ) as RuleSetRule
+    fileLoaderRule.exclude = /\.svg$/
+
+    //loaders
+    config.module.rules.push(getSvgLoader())
+    config.module.rules.push(getStyleLoader(true))
+    //resolve
+    config.resolve.plugins = [...(config.resolve.plugins ?? []), ...buildResolve().plugins]
+
+    return config
   },
 }
 export default config
