@@ -1,16 +1,17 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 
 import { LS_THEME_KEY, Theme, ThemeContext } from "./ThemeContext"
 
 export const useTheme = () => {
   const { setTheme, theme } = useContext(ThemeContext)
 
+  useEffect(() => {
+    localStorage.setItem(LS_THEME_KEY, theme)
+    document.body.setAttribute("data-theme", theme)
+  }, [theme])
   const toggleTheme = () => {
-    setTheme((_theme) => {
-      const theme = _theme === Theme.Light ? Theme.Dark : Theme.Light
-      localStorage.setItem(LS_THEME_KEY, theme)
-
-      return theme
+    setTheme((prevTheme) => {
+      return prevTheme === Theme.Light ? Theme.Dark : Theme.Light
     })
   }
 

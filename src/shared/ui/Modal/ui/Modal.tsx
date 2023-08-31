@@ -2,6 +2,9 @@ import clx from "./modal.module.scss"
 import React, { FC, useRef } from "react"
 import FocusLock from "react-focus-lock"
 
+import { Button, ThemeButton } from "~shared/ui/Button"
+import { ButtonSize } from "~shared/ui/Button/Button"
+
 import { cn } from "../../../lib/classNames"
 import { useModal } from "../../../lib/hooks/useModal"
 import { Portal } from "../../Portal"
@@ -32,15 +35,14 @@ export const Modal: FC<IModalProps> = ({ children, onClose, isOpen }) => {
       <div className={cn(clx.overlay, { [clx.isClosing]: isClosing })} ref={overlayElRef} data-testid="wrap">
         <FocusLock>
           <div className={cn(`${clx.content}`)}>
-            <button
-              type="button"
-              className={clx.closeButton}
+            <Button
               onClick={close}
-              data-testid="modal-close-button"
-            >
-              Х1
-            </button>
-
+              className={clx.closeButton}
+              square
+              theme={ThemeButton.Clear}
+              size={ButtonSize.XL}
+              children={"X"}
+            />
             {children}
           </div>
         </FocusLock>

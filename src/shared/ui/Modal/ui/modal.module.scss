@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 5;
+  z-index: var(--z-index-overlay);
 }
 
 .isClosing {
@@ -15,27 +15,14 @@
 .content {
   border: 1px solid;
   position: relative;
-  background: rgb(255 255 255 / 100%);
   border-radius: 5px;
   padding: 10px 40px 20px 20px;
 }
 
 .closeButton {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  margin: 0;
-  right: 0;
+  right: 5px;
   top: 0;
-  border: none;
-  cursor: pointer;
-  background: none;
-  color: rgb(0 0 0 / 60%);
-}
-
-.closeButton:hover {
-  color: rgb(0 0 0 / 100%);
 }
 
 .title {
