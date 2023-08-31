@@ -18,6 +18,11 @@ const MainPage: FC = () => {
         <input type="text" />
         <input type="text" />
         <input type="text" />
+
+        <input type="text" />
+        <input type="text" />
+        <input type="text" />
+        <input type="text" />
         <button>click</button>
         <button onClick={() => setIsOpenModal2(true)}>OPEN MODAL 2</button>
 

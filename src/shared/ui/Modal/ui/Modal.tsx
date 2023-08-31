@@ -33,8 +33,8 @@ export const Modal: FC<IModalProps> = ({ children, onClose, isOpen }) => {
   return (
     <Portal id={MODAL_CONTAINER_ID}>
       <div className={cn(clx.overlay, { [clx.isClosing]: isClosing })} ref={overlayElRef} data-testid="wrap">
-        <FocusLock>
-          <div className={cn(`${clx.content}`)}>
+        <div className={cn(`${clx.content}`)}>
+          <FocusLock>
             <Button
               onClick={close}
               className={clx.closeButton}
@@ -44,8 +44,8 @@ export const Modal: FC<IModalProps> = ({ children, onClose, isOpen }) => {
               children={"X"}
             />
             {children}
-          </div>
-        </FocusLock>
+          </FocusLock>
+        </div>
       </div>
     </Portal>
   )
