@@ -2,7 +2,7 @@ type containerOptions = {
   id: string
   mountNode?: HTMLElement
 }
-export const createContainer = (options: containerOptions) => {
+export const createPortalContainer = (options: containerOptions) => {
   if (document.getElementById(options.id)) {
     return
   }
@@ -12,5 +12,6 @@ export const createContainer = (options: containerOptions) => {
   const portalContainer = document.createElement("div")
   portalContainer.setAttribute("id", id)
   portalContainer.setAttribute("data-testid", `portalContainer-${id}`)
+
   mountNode.appendChild(portalContainer)
 }
