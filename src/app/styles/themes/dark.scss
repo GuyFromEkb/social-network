@@ -1,4 +1,6 @@
-body.dark {
+// класс без дата атрибута, нужен для темизации сторибука
+body.dark,
+body[data-theme="dark"] {
   --bg-color: #090949;
   --inverted-bg-color: #e8e8ea;
 
