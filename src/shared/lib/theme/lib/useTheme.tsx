@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react"
 import { LS_THEME_KEY, Theme, ThemeContext } from "./ThemeContext"
 
 export const useTheme = () => {
-  const { setTheme, theme } = useContext(ThemeContext)
+  const { setTheme, theme } = useContext(ThemeContext)!
 
   useEffect(() => {
     localStorage.setItem(LS_THEME_KEY, theme)

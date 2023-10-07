@@ -2,7 +2,6 @@ import { FC, useState } from "react"
 import { useTranslation } from "react-i18next"
 
 import { Modal } from "~shared/ui/Modal"
-import { Counter } from "~widgets/Counter"
 
 const MainPage: FC = () => {
   const { t } = useTranslation("main")
@@ -13,7 +12,7 @@ const MainPage: FC = () => {
       <h4> {t("Текст на главной странице")}</h4>
 
       <button onClick={() => setIsOpenModal1(true)}>openModal</button>
-      <Counter />
+      {/*<Counter />*/}
       <Modal isOpen={isOpenModal1} onClose={() => setIsOpenModal1(false)}>
         <h1>Hi I am Modal1</h1>
         <input type="text" />

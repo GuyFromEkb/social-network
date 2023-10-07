@@ -21,17 +21,18 @@ const config: StorybookConfig = {
   },
   webpackFinal: async (config) => {
     // remove svg from existing rule
-    const fileLoaderRule = config.module.rules.find(
+    const fileLoaderRule = config.module?.rules?.find(
+      //@ts-ignore какая-то шляпа
       (rule: RuleSetRule & { test: RegExp }) => rule.test && rule.test.test(".svg")
     ) as RuleSetRule
     fileLoaderRule.exclude = /\.svg$/
 
     //loaders
-    config.module.rules.push(getSvgLoader())
-    config.module.rules.push(getStyleLoader(true))
-    //resolve
-    config.resolve.plugins = [...(config.resolve.plugins ?? []), ...buildResolve().plugins]
+    config.module?.rules?.push(getSvgLoader())
+    config.module?.rules?.push(getStyleLoader(true))
 
+    //resolve
+    config.resolve!.plugins = [...(config.resolve?.plugins ?? []), ...(buildResolve().plugins ?? [])]
     return config
   },
 }

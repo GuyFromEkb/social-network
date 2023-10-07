@@ -32,5 +32,5 @@ export const buildPlugins = (options: BuildOptions): WebpackPluginInstance[] => 
       new CopyPlugin({
         patterns: [{ from: paths.locales, to: paths.buildLocales }],
       }),
-  ].filter(Boolean)
+  ].filter(Boolean) as []
 }

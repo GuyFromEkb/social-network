@@ -2,11 +2,9 @@ import clx from "./modal.module.scss"
 import React, { FC, useRef } from "react"
 import FocusLock from "react-focus-lock"
 
-import { Button, ThemeButton } from "~shared/ui/Button"
-import { ButtonSize } from "~shared/ui/Button/Button"
-
 import { cn } from "../../../lib/classNames"
 import { useModal } from "../../../lib/hooks/useModal"
+import { Button, ButtonSize, ThemeButton } from "../../Button"
 import { Portal } from "../../Portal"
 
 const MODAL_CONTAINER_ID = "modal-container-id"
@@ -41,8 +39,9 @@ export const Modal: FC<IModalProps> = ({ children, onClose, isOpen }) => {
               square
               theme={ThemeButton.Clear}
               size={ButtonSize.XL}
-              children={"X"}
-            />
+            >
+              X
+            </Button>
             {children}
           </FocusLock>
         </div>

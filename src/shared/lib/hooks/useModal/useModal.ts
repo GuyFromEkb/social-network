@@ -1,4 +1,4 @@
-import { MutableRefObject, useCallback, useEffect, useRef, useState } from "react"
+import { MutableRefObject, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
 
 import { createPortalContainer } from "../../createPortalContainer"
 
@@ -50,7 +50,7 @@ export function useModal({
     [overlayRefElement, close]
   )
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     createPortalContainer({ id: modalContainerId })
   }, [modalContainerId])
 

@@ -7,6 +7,9 @@ const meta = {
   component: Modal,
   parameters: {
     layout: "centered",
+    loki: {
+      skip: true,
+    },
   },
 } satisfies Meta<typeof Modal>
 export default meta

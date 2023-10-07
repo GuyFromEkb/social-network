@@ -1,8 +1,17 @@
-export const classNames = (cls: string, mods: Record<string, boolean> = {}, additional: string[] = []) => {
-  const filteredMods = Object.entries(mods).reduce<string[]>((acc, [cls, flag]) => {
-    if (flag) acc.push(cls)
-    return acc
-  }, [])
+export const classNames = (
+  cls: string | (string | undefined)[],
+  mods: Record<string, boolean | undefined> = {},
+  additional?: (string | undefined)[] | string
+) => {
+  const filteredMods = Object.entries(mods)
+    .filter(([, flag]) => flag)
+    .map(([cls]) => cls)
 
-  return [cls, ...additional, ...filteredMods].filter(Boolean).join(" ")
+  return [
+    ...(Array.isArray(cls) ? cls : [cls]),
+    ...filteredMods,
+    ...(Array.isArray(additional) ? additional : [additional]),
+  ]
+    .filter(Boolean)
+    .join(" ")
 }
