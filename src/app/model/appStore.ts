@@ -1,12 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit"
 
-import { counterSlice } from "~widgets/Counter"
+import { rootReducer } from "./rootReducer"
+import { StateSchema } from "./types"
 
-export const appStore = configureStore({
-  reducer: {
-    [counterSlice.name]: counterSlice.reducer,
-  },
-})
+export const createAppStore = (initialState?: StateSchema) => {
+  return configureStore({
+    reducer: rootReducer,
+    devTools: __ENV_IS_DEV__,
+    preloadedState: initialState,
+  })
+}
 
-export type AppRootState = ReturnType<typeof appStore.getState>
-export type AppDispatch = typeof appStore.dispatch
+export const appStore = createAppStore()
+
+export type AppStore = ReturnType<typeof createAppStore>

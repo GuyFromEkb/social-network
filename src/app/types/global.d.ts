@@ -22,5 +22,5 @@ declare const __ENV_IS_DEV__: boolean
 declare const __ENV_GITHUB_REPO_NAME__: string | undefined
 
 //⚠️ FSD hack redux infering types
-declare type AppRootState = import("../model/appStore").AppRootState
-declare type AppDispatch = import("../model/appStore").AppDispatch
+declare type AppRootState = import("../model/types").AppRootState
+declare type AppDispatch = import("../model/types").AppDispatch

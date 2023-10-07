@@ -11,7 +11,7 @@ export const i18nConfig = i18n
   .use(Backend)
   .use(initReactI18next)
   .init({
-    debug: __ENV_IS_DEV__,
+    // debug: __ENV_IS_DEV__,
     fallbackLng: "ru",
     interpolation: {
       escapeValue: false,
