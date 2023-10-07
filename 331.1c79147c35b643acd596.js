@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkstudy_project=self.webpackChunkstudy_project||[]).push([[331],{331:(e,s,t)=>{t.r(s),t.d(s,{default:()=>n});var r=t(893),c=t(72);const n=function(){var e=(0,c.$G)("main").t;return(0,r.jsx)("div",{children:(0,r.jsxs)("h4",{children:[" ",e("Текст на главной странице")]})})}}}]);
