@@ -18,7 +18,7 @@ interface IModalProps {
 }
 
 export const Modal: FC<IModalProps> = ({ children, onClose, isOpen }) => {
-  const overlayElRef = useRef<HTMLDivElement>(null)
+  const overlayElRef = useRef<HTMLDivElement | null>(null)
 
   const { close, isClosing } = useModal({
     overlayRefElement: overlayElRef,

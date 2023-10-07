@@ -6,7 +6,7 @@ interface UseModalProps {
   onClose?: () => void
   isOpen?: boolean
   animationDelay: number
-  overlayRefElement: MutableRefObject<HTMLDivElement>
+  overlayRefElement: MutableRefObject<HTMLDivElement | null>
   modalContainerId: string
 }
 
